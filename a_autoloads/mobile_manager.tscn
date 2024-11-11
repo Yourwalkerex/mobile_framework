@@ -1,0 +1,388 @@
+[gd_scene load_steps=25 format=3 uid="uid://dyxfqg2ponl4p"]
+
+[ext_resource type="Script" path="res://b_main/control_layout.gd" id="1_3wk4j"]
+[ext_resource type="Texture2D" uid="uid://dt3g08bd6bo0i" path="res://c_system_files/controller map.png" id="2_a78ok"]
+[ext_resource type="Texture2D" uid="uid://dt62oxgdwl1wi" path="res://c_system_files/button_icons/controller_a.png" id="3_53x1r"]
+[ext_resource type="Texture2D" uid="uid://chpq6l8oif7nu" path="res://c_system_files/button_icons/controller_b.png" id="4_2l7pt"]
+[ext_resource type="Texture2D" uid="uid://btaxu6h00sf5g" path="res://c_system_files/button_icons/controller_x.png" id="5_37q8r"]
+[ext_resource type="Texture2D" uid="uid://cen16lyvsqwpw" path="res://c_system_files/button_icons/controller_y.png" id="6_j73js"]
+[ext_resource type="Texture2D" uid="uid://yufqkpkh2o7" path="res://c_system_files/button_icons/controller_r.png" id="7_aoufx"]
+[ext_resource type="Texture2D" uid="uid://cykvwyri55ghd" path="res://c_system_files/button_icons/controller_start.png" id="8_pe8rx"]
+[ext_resource type="Texture2D" uid="uid://b250gaixnwad6" path="res://c_system_files/button_icons/d_pad.png" id="9_amm66"]
+[ext_resource type="Texture2D" uid="uid://rqimdpi1dhoy" path="res://c_system_files/button_icons/controller_l.png" id="10_dxq81"]
+[ext_resource type="Texture2D" uid="uid://b7hxm3onxq5pt" path="res://c_system_files/button_icons/controller_select.png" id="11_hbybh"]
+[ext_resource type="PackedScene" uid="uid://dh2yqd1305aio" path="res://e_levels/test_map.tscn" id="12_l17sn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmbc8"]
+size = Vector2(80, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buun1"]
+size = Vector2(80, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5fwp"]
+size = Vector2(24, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fo0gc"]
+size = Vector2(24, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc11r"]
+size = Vector2(48, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgd6u"]
+size = Vector2(48, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7ww7"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwb7m"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5m2ie"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5irl"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ravp5"]
+size = Vector2(49, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ao3r"]
+size = Vector2(48, 25)
+
+[node name="mobile_manager" type="CanvasLayer"]
+script = ExtResource("1_3wk4j")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="main_window" type="SubViewportContainer" parent="."]
+unique_name_in_owner = true
+offset_right = 240.0
+offset_bottom = 208.0
+stretch = true
+
+[node name="sub_viewport" type="SubViewport" parent="main_window"]
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(240, 208)
+size_2d_override = Vector2i(240, 208)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="test_map" parent="main_window/sub_viewport" instance=ExtResource("12_l17sn")]
+
+[node name="check_rect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 218)
+anchors_preset = -1
+anchor_top = 0.488263
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 0, 1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="controller_map" type="TextureRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("2_a78ok")
+metadata/_edit_lock_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 93.0
+offset_top = 222.0
+offset_right = 135.0
+offset_bottom = 245.0
+text = "Label"
+
+[node name="label_2" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 93.0
+offset_top = 247.0
+offset_right = 135.0
+offset_bottom = 270.0
+text = "Label2"
+
+[node name="left" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_top = 208.0
+offset_right = 120.0
+offset_bottom = 426.0
+metadata/_edit_lock_ = true
+
+[node name="d_pad" type="Control" parent="left"]
+anchors_preset = 0
+offset_left = 3.0
+offset_top = 107.0
+offset_right = 83.0
+offset_bottom = 187.0
+
+[node name="touch_up" type="TouchScreenButton" parent="left/d_pad"]
+position = Vector2(40, 12)
+shape = SubResource("RectangleShape2D_qmbc8")
+passby_press = true
+action = "ui_up"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="touch_down" type="TouchScreenButton" parent="left/d_pad"]
+position = Vector2(40, 68)
+shape = SubResource("RectangleShape2D_buun1")
+passby_press = true
+action = "ui_down"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="touch_left" type="TouchScreenButton" parent="left/d_pad"]
+position = Vector2(12, 40)
+shape = SubResource("RectangleShape2D_x5fwp")
+passby_press = true
+action = "ui_left"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="touch_right" type="TouchScreenButton" parent="left/d_pad"]
+position = Vector2(68, 40)
+shape = SubResource("RectangleShape2D_fo0gc")
+passby_press = true
+action = "ui_right"
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="texture_rect" type="TextureRect" parent="left/d_pad"]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("9_amm66")
+stretch_mode = 5
+
+[node name="touch_l" type="Control" parent="left"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 56.0
+offset_bottom = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="touch_l" type="TouchScreenButton" parent="left/touch_l"]
+texture_normal = ExtResource("10_dxq81")
+shape = SubResource("RectangleShape2D_sc11r")
+action = "controller_l"
+metadata/_edit_use_anchors_ = true
+
+[node name="texture_rect" type="TextureRect" parent="left/touch_l"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_dxq81")
+stretch_mode = 5
+
+[node name="touch_select" type="Control" parent="left"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 7.0
+offset_right = 64.0
+offset_bottom = -211.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="touch_select" type="TouchScreenButton" parent="left/touch_select"]
+texture_normal = ExtResource("11_hbybh")
+shape = SubResource("RectangleShape2D_jgd6u")
+action = "controller_select"
+metadata/_edit_use_anchors_ = true
+
+[node name="texture_rect" type="TextureRect" parent="left/touch_select"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_hbybh")
+stretch_mode = 5
+
+[node name="right" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -218.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="touch_a" type="Control" parent="right"]
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 136.0
+offset_right = 112.0
+offset_bottom = 168.0
+metadata/_edit_group_ = true
+
+[node name="button" type="TouchScreenButton" parent="right/touch_a"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_h7ww7")
+action = "controller_a"
+metadata/_edit_use_anchors_ = true
+
+[node name="texture_rect" type="TextureRect" parent="right/touch_a"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_53x1r")
+stretch_mode = 5
+
+[node name="touch_b" type="Control" parent="right"]
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 175.0
+offset_right = 72.0
+offset_bottom = 207.0
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="button" type="TouchScreenButton" parent="right/touch_b"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_pwb7m")
+action = "controller_b"
+metadata/_edit_use_anchors_ = true
+
+[node name="texture_rect" type="TextureRect" parent="right/touch_b"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_2l7pt")
+stretch_mode = 5
+
+[node name="touch_x" type="Control" parent="right"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 97.0
+offset_right = 72.0
+offset_bottom = 129.0
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="button" type="TouchScreenButton" parent="right/touch_x"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_5m2ie")
+action = "controller_x"
+metadata/_edit_use_anchors_ = true
+
+[node name="texture_rect" type="TextureRect" parent="right/touch_x"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_37q8r")
+stretch_mode = 5
+
+[node name="touch_y" type="Control" parent="right"]
+anchors_preset = 0
+offset_top = 136.0
+offset_right = 32.0
+offset_bottom = 168.0
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="button" type="TouchScreenButton" parent="right/touch_y"]
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_g5irl")
+action = "controller_y"
+metadata/_edit_use_anchors_ = true
+
+[node name="texture_rect" type="TextureRect" parent="right/touch_y"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_j73js")
+stretch_mode = 5
+
+[node name="touch_r" type="Control" parent="right"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 64.0
+offset_top = 48.0
+offset_right = 113.0
+offset_bottom = 80.0
+metadata/_edit_group_ = true
+
+[node name="button" type="TouchScreenButton" parent="right/touch_r"]
+position = Vector2(24, 16)
+shape = SubResource("RectangleShape2D_ravp5")
+action = "controller_r"
+metadata/_edit_use_anchors_ = true
+
+[node name="texture_rect" type="TextureRect" parent="right/touch_r"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aoufx")
+stretch_mode = 5
+
+[node name="touch_start" type="Control" parent="right"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 56.0
+offset_top = 7.0
+offset_right = 104.0
+offset_bottom = 32.0
+metadata/_edit_group_ = true
+
+[node name="button" type="TouchScreenButton" parent="right/touch_start"]
+position = Vector2(24, 12)
+shape = SubResource("RectangleShape2D_7ao3r")
+action = "controller_start"
+metadata/_edit_use_anchors_ = true
+
+[node name="texture_rect" type="TextureRect" parent="right/touch_start"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_pe8rx")
+stretch_mode = 5

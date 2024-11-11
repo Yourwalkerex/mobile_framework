@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://5beqxprawr0b"]
+
+[ext_resource type="Texture2D" uid="uid://3kcy1a3xgrlj" path="res://e_levels/tileset.png" id="1_fan7b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw0sp"]
+atlas = ExtResource("1_fan7b")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qw2"]
+atlas = ExtResource("1_fan7b")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypkpb"]
+atlas = ExtResource("1_fan7b")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxd5k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw0sp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46qw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypkpb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46qw2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2y8qu"]
+size = Vector2(16, 16)
+
+[node name="Node2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mxd5k")
+autoplay = "default"
+frame_progress = 0.643615
+
+[node name="static_body_2d" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="collision_shape_2d" type="CollisionShape2D" parent="static_body_2d"]
+shape = SubResource("RectangleShape2D_2y8qu")

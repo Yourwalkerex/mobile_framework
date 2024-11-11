@@ -1,0 +1,337 @@
+[gd_scene load_steps=16 format=3 uid="uid://b157aeenyhem7"]
+
+[ext_resource type="Script" path="res://b_main/main.gd" id="1_gar6x"]
+[ext_resource type="Shader" path="res://b_main/shaders/alpha_mask_and_fade.gdshader" id="2_l2f7w"]
+[ext_resource type="Texture2D" uid="uid://c1m0p5wc4pf80" path="res://test_sprite.png" id="4_adgrp"]
+[ext_resource type="Texture2D" uid="uid://b35ibvd8apu1f" path="res://fade.png" id="5_oyl8p"]
+[ext_resource type="Texture2D" uid="uid://b3xc5og0socqe" path="res://blank.png" id="6_anp5y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tt4e6"]
+resource_local_to_scene = true
+shader = ExtResource("2_l2f7w")
+shader_parameter/alpha = Color(0, 0, 0, 0)
+shader_parameter/alpha_mask = Color(0, 0.79, 0.79, 1)
+shader_parameter/fade_mask = Color(1, 0, 1, 1)
+shader_parameter/fading = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqten"]
+shader = ExtResource("2_l2f7w")
+shader_parameter/alpha = Color(0, 0, 0, 0)
+shader_parameter/alpha_mask = Color(0, 0.792157, 0.792157, 1)
+shader_parameter/fade_mask = Color(1, 0, 1, 1)
+shader_parameter/fading = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tvq0"]
+atlas = ExtResource("5_oyl8p")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4gkn"]
+atlas = ExtResource("5_oyl8p")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ockon"]
+atlas = ExtResource("5_oyl8p")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjhnx"]
+atlas = ExtResource("5_oyl8p")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hplre"]
+atlas = ExtResource("5_oyl8p")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0cmm"]
+atlas = ExtResource("5_oyl8p")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbfrx"]
+atlas = ExtResource("5_oyl8p")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fgfu8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tvq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4gkn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ockon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjhnx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hplre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0cmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbfrx")
+}],
+"loop": false,
+"name": &"fade",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_anp5y")
+}],
+"loop": false,
+"name": &"stop",
+"speed": 5.0
+}]
+
+[node name="main" type="Node"]
+script = ExtResource("1_gar6x")
+
+[node name="background" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.145098, 0.129412, 0.121569, 1)
+
+[node name="auto_loads" type="Node" parent="."]
+
+[node name="sprite" type="SubViewportContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+z_as_relative = false
+material = SubResource("ShaderMaterial_tt4e6")
+anchors_preset = -1
+anchor_left = 0.358333
+anchor_top = 0.110329
+anchor_right = 0.558333
+anchor_bottom = 0.223005
+metadata/_edit_use_anchors_ = true
+
+[node name="sub_viewport" type="SubViewport" parent="sprite"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(48, 48)
+render_target_update_mode = 0
+
+[node name="sprite_2d" type="Sprite2D" parent="sprite/sub_viewport"]
+material = SubResource("ShaderMaterial_dqten")
+texture = ExtResource("4_adgrp")
+centered = false
+
+[node name="fade" type="AnimatedSprite2D" parent="sprite/sub_viewport"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_fgfu8")
+animation = &"stop"
+centered = false
+
+[node name="canvas_layer" type="Control" parent="."]
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="top" type="ColorRect" parent="canvas_layer"]
+visible = false
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 176.0
+color = Color(0, 0.266667, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="control_layout_2" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchor_top = 0.42723
+anchor_right = 1.0
+anchor_bottom = 0.913146
+offset_bottom = 37.0
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="a" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.837324
+anchor_top = 0.671567
+anchor_right = 0.916491
+anchor_bottom = 0.780722
+mouse_filter = 2
+text = "A"
+metadata/_edit_use_anchors_ = true
+
+[node name="b" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.74108
+anchor_top = 0.763234
+anchor_right = 0.820246
+anchor_bottom = 0.872389
+mouse_filter = 2
+text = "B"
+metadata/_edit_use_anchors_ = true
+
+[node name="x" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.616667
+anchor_top = 0.650734
+anchor_right = 0.691784
+anchor_bottom = 0.759889
+mouse_filter = 2
+text = "X"
+metadata/_edit_use_anchors_ = true
+
+[node name="y" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.74108
+anchor_top = 0.552817
+anchor_right = 0.816197
+anchor_bottom = 0.661972
+mouse_filter = 2
+text = "Y"
+metadata/_edit_use_anchors_ = true
+
+[node name="up" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104167
+anchor_top = 0.535211
+anchor_right = 0.254401
+anchor_bottom = 0.644366
+mouse_filter = 2
+action_mode = 0
+text = "^"
+metadata/_edit_use_anchors_ = true
+
+[node name="down" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.104167
+anchor_top = 0.764085
+anchor_right = 0.254401
+anchor_bottom = 0.87324
+mouse_filter = 2
+text = "V"
+metadata/_edit_use_anchors_ = true
+
+[node name="left" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.025
+anchor_top = 0.630282
+anchor_right = 0.100117
+anchor_bottom = 0.763615
+mouse_filter = 2
+text = "<"
+metadata/_edit_use_anchors_ = true
+
+[node name="right" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.266667
+anchor_top = 0.633803
+anchor_right = 0.341784
+anchor_bottom = 0.767136
+mouse_filter = 2
+text = ">"
+metadata/_edit_use_anchors_ = true
+
+[node name="start" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.770833
+anchor_top = 0.257042
+anchor_right = 0.9625
+anchor_bottom = 0.366197
+mouse_filter = 2
+text = "Start"
+metadata/_edit_use_anchors_ = true
+
+[node name="select" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0458333
+anchor_top = 0.246479
+anchor_right = 0.270833
+anchor_bottom = 0.355634
+mouse_filter = 2
+text = "Select"
+metadata/_edit_use_anchors_ = true
+
+[node name="l" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1375
+anchor_top = 0.401408
+anchor_right = 0.247829
+anchor_bottom = 0.510563
+mouse_filter = 2
+text = "L"
+metadata/_edit_use_anchors_ = true
+
+[node name="r" type="Button" parent="control_layout_2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.394366
+anchor_right = 0.905634
+anchor_bottom = 0.503521
+mouse_filter = 2
+text = "R
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="die" type="Button" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.395833
+anchor_top = 0.255869
+anchor_right = 0.554167
+anchor_bottom = 0.328638
+text = "Die!"
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="Label" parent="."]
+visible = false
+offset_left = 58.4362
+offset_top = 186.379
+offset_right = 98.4362
+offset_bottom = 209.379
+text = "A     B    X   Y   L   R"
+
+[node name="label_2" type="Label" parent="."]
+visible = false
+offset_left = 58.0
+offset_top = 214.0
+offset_right = 193.0
+offset_bottom = 237.0
+theme_override_font_sizes/font_size = 9
+text = "Start     Select"
+
+[node name="controll_area" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_top = 208.0
+offset_right = 240.0
+offset_bottom = 426.0
+color = Color(0.4, 0.4, 0, 1)
+
+[connection signal="pressed" from="die" to="." method="_on_die_pressed"]

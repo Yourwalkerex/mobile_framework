@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://4rqbuqpbmrre"]
+
+[ext_resource type="FontFile" uid="uid://bcngfbpsyhihd" path="res://c_system_files/quaver.ttf" id="1_f4wbk"]
+
+[resource]
+Button/font_sizes/font_size = 8
+Button/fonts/font = ExtResource("1_f4wbk")
+Label/font_sizes/font_size = 8
+Label/fonts/font = ExtResource("1_f4wbk")

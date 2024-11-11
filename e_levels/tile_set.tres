@@ -1,0 +1,55 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bbfvmijeecihd"]
+
+[ext_resource type="Texture2D" uid="uid://3kcy1a3xgrlj" path="res://e_levels/tileset.png" id="1_r0bud"]
+[ext_resource type="PackedScene" uid="uid://5beqxprawr0b" path="res://e_levels/water.tscn" id="2_4phyi"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y6ogc"]
+texture = ExtResource("1_r0bud")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+3:3/0 = 0
+2:3/0 = 0
+1:3/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:0/animation_frame_0/duration = 1.0
+4:0/animation_frame_1/duration = 1.0
+4:0/animation_frame_2/duration = 1.0
+4:0/0 = 0
+4:0/0/physics_layer_2/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qus62"]
+resource_name = "water"
+scenes/1/scene = ExtResource("2_4phyi")
+
+[resource]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+physics_layer_1/collision_layer = 2
+physics_layer_1/collision_mask = 0
+physics_layer_2/collision_layer = 4
+physics_layer_2/collision_mask = 0
+physics_layer_3/collision_layer = 8
+physics_layer_3/collision_mask = 0
+physics_layer_4/collision_layer = 16
+physics_layer_4/collision_mask = 0
+physics_layer_5/collision_layer = 32
+physics_layer_5/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_y6ogc")
+sources/1 = SubResource("TileSetScenesCollectionSource_qus62")
